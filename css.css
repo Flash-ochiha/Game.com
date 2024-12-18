@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pixel Game</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: #87CEEB; /* Sky blue */
+        }
+        #gameCanvas {
+            border: 2px solid #000;
+            background-image: url('pixel-background.png'); /* Placeholder for pixel background */
+            background-size: cover;
+        }
+        .character {
+            width: 50px;
+            height: 50px;
+            background-color: #FF0000; /* Red character */
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div id="gameCanvas" style="width: 800px; height: 600px; position: relative;">
+        <div class="character" id="character" style="top: 275px; left: 375px;"></div>
+    </div>
+    <script>
+        const character = document.getElementById('character');
+        document.addEventListener('keydown', (event) => {
+            const style = window.getComputedStyle(character);
+            let top = parseInt(style.top);
+            let left = parseInt(style.left);
+            switch(event.key) {
+                case 'ArrowUp':
+                    character.style.top = (top - 10) + 'px';
+                    break;
+                case 'ArrowDown':
+                    character.style.top = (top + 10) + 'px';
+                    break;
+                case 'ArrowLeft':
+                    character.style.left = (left - 10) + 'px';
+                    break;
+                case 'ArrowRight':
+                    character.style.left = (left + 10) + 'px';
+                    break;
+            }
+        });
+    </script>
+</body>
+</html>
